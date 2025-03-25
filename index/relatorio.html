@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGrocery</title>
+    <link rel="stylesheet" href="../style/relatorio.css">
+    <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" 
+            integrity="sha512-MpDFIChbcXl2QgipQrt1VcPHMldRILetapBl5MPCA9Y8r7qvlwx1/Mc9hNTzY+kS5kX6PdoDq41ws1HiVNLdZA==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <header>
+        <a href="../index/index.html">
+            <h2 class="hd-logo">TechGrocery</h2>
+        </a>
+        <a href="../index/checkout.html">
+            <div class="hd-voltar">Voltar</div>
+        </a>
+    </header>
+
+    <div class="corpo">
+        <div id="gerarPDF">Gerar Relatório</div>
+        <content>
+            <h1>Relatório de Compra</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Preço Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Produto 1</td>
+                        <td>1</td>
+                        <td>R$ 10,00</td>
+                        <td>R$ 20,00</td>
+                    </tr>
+                    <tr>
+                        <td>Produto 2</td>
+                        <td>2</td>
+                        <td>R$ 15,00</td>
+                        <td>R$ 15,00</td>
+                    </tr>
+                    <tr>
+                        <td>Produto 3</td>
+                        <td>3</td>
+                        <td>R$ 7,00</td>
+                        <td>R$ 21,00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </content>
+    </div>
+
+    <script>
+        var btn = document.querySelector("#gerarPDF");
+
+        btn.addEventListener("click", () => {
+            var content = document.querySelector("content");
+
+            const options = {
+                margin: [14, 14, 14, 14],
+                filename: "Relatorio.pdf",
+                html2canvas: { scale: 2 },
+                jsPDF: {
+                    unit: "mm",
+                    format: "a4",
+                    orientation: "portrait"
+                }
+            };
+
+            html2pdf().set(options).from(content).save();
+        });
+    </script>
+</body>
+</html>

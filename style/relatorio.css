@@ -1,0 +1,134 @@
+
+/* 
+    Paleta de Cores:
+    #0092FF
+    #00AAFF
+    #00C3FF
+    #00DBFF
+    #00F3FF
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@font-face {
+    font-family: 'Donuts';
+    src: url(../fonts/Donuts\ King.otf) format(opentype);
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Header -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+header{
+    top: 0px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    background-color: #0092FF;
+    border-bottom-left-radius: 30px;
+    z-index: 1000;
+}
+
+.hd-logo{
+    margin-left: 30px;
+    color: #00f2ffbc;
+    font-family: 'Donuts';
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.hd-voltar{
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #005ea5;
+}
+
+.hd-voltar:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+.hd-voltar:active{
+    background-color: rgb(210, 210, 210);
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Relatorio -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#gerarPDF{
+    background-color: #0092FF;
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #fff;
+    margin-bottom: 20px;
+    background-image: url(../images/Vector.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+#gerarPDF:hover{
+    filter: grayscale(0.3);
+}
+
+#gerarPDF:active{
+    filter: grayscale(0.6);
+}
+
+
+.corpo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #0092FF;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+caption {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #0092FF;
+    font-weight: bold;
+}

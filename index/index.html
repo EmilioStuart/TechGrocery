@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGrocery</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <a href="">
+            <h2 class="hd-logo">TechGrocery</h2>
+        </a>
+        <div class="hd-redirect">
+            <a href="carrinho.html">
+                <div class="hd-btn-outl">
+                    <img src="../images/carrinho_azul.svg" alt="" class="hd-carrinho">
+                </div>
+            </a>
+            <a href="#conta">
+                <div class="hd-btn-outl">
+                    <img src="../images/profile_azul.svg" alt="" class="hd-perfil">
+                <div>
+            </a>
+        </div>
+    </header>
+    <div id="conta">
+        <a href="login.html">
+            <div class="conta login">
+                <p>Login</p>
+            </div>
+        </a>
+        <a href="cadastro.html">
+            <div class="conta cadastro">
+                <p>Cadastro</p>
+            </div>
+        </a>
+    </div>
+    <div class="banners">
+    </div>
+    <div id="produtos">
+        <h2 class="produtos-title">Produtos:</h2>
+        <div class="prod-outline">
+            <div class="card">
+                <img src="../images/dimbinho_morango.png" alt="" class="card-img">
+                <h3 class="card-title">Bala sabor Morango 600g - Dimbinho</h3>
+                <p class="card-price">R$ 15.49</p>
+    
+                <label for="add-carrinho">
+                    <input type="number" name="add-carrinho" id="add-carrinho" placeholder="Quantidade: " min="1" class="card-qnt">
+                </label>
+                <button class="card-submit">Adicionar</button>
+            </div>
+            <div class="card">
+                <img src="../images/bala_chita.png" alt="" class="card-img">
+                <h3 class="card-title">Bala Chita sabor Variado 600g</h3>
+                <p class="card-price">R$ 16.49</p>
+    
+                <label for="add-carrinho">
+                    <input type="number" name="add-carrinho" id="add-carrinho" placeholder="Quantidade: " min="1" class="card-qnt">
+                </label>
+                <button class="card-submit">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

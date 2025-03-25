@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGrocery - Pagamento</title>
+    <link rel="stylesheet" href="../style/checkout.css">
+    <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <a href="../index/index.html">
+            <h2 class="hd-logo">TechGrocery</h2>
+        </a>
+        <a href="../index/carrinho.html">
+            <div class="hd-voltar">Voltar</div>
+        </a>
+    </header>
+
+    <content>
+        <div class="endereco">
+            <div class="endereco-outline">
+                <h2 class="endereco-title">Endereço de Entrega:</h2>
+                <input type="number" name="cep" id="cep" placeholder="CEP: " class="endereco-cep" maxlength="8" required>
+                
+                <input type="number" name="numero" id="numero" placeholder="Número: " class="endereco-numero" required>
+                
+                <input type="text" name="complemento" id="complemento" placeholder="Complemento: " class="endereco-complemento" maxlength="100">
+
+                <div class="endereco-submit">Registrar Endereço</div>
+            </div>
+        </div>
+        <div class="finalizar">
+            <h2 class="finalizar-title">Total:</h2>
+            <div class="finalizar-outline">
+                <div class="finalizar-card">
+                    <h3 class="finalizar-card-title">Subtotal:</h3>
+                    <p class="finalizar-card-price">R$ 31.98</p>
+                </div>
+                <div class="finalizar-card">
+                    <h3 class="finalizar-card-title">Frete:</h3>
+                    <p class="finalizar-card-price">R$ 5.00</p>
+                </div>
+                <div class="finalizar-card">
+                    <h3 class="finalizar-card-title">Total:</h3>
+                    <p class="finalizar-card-price">R$ 36.98</p>
+                </div>
+            </div>
+        </div>
+        <div class="cadastrar-cartao">
+            <div class="cartao">
+                <h2 class="cartao-title">Cartão de Crédito:</h2>
+                <input type="number" name="numeroCartao" id="numeroCartao" placeholder="Número do Cartão: " class="cartao-numero" minlength="16" maxlength="16" required>
+
+                <input type="text" name="nomeCartao" id="nomeCartao" placeholder="Nome no Cartão: " class="cartao-nome" required>
+
+                <input type="month" name="validadeCartao" id="validadeCartao" class="cartao-validade" required>
+                
+                <input type="number" name="cvvCartao" id="cvvCartao" placeholder="CVV: " class="cartao-cvv" min="100" max="999" required>
+
+                <div class="cartao-submit" onclick="CadastrarCartao()">Cadastrar Cartão</div>
+            </div>
+        </div>
+    </content>
+    <div class="btn">Comprar</div>
+    <script>
+        const validadeCartao = document.getElementById('validadeCartao');
+        const dataAtual = new Date();
+        validadeCartao.min = `${dataAtual.getFullYear()}-${dataAtual.getMonth() + 1}`;
+    </script>
+</body>
+</html>

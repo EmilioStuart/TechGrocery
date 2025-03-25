@@ -1,0 +1,220 @@
+/* 
+    Paleta de Cores:
+    #0092FF
+    #00AAFF
+    #00C3FF
+    #00DBFF
+    #00F3FF
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@font-face {
+    font-family: 'Donuts';
+    src: url(../fonts/Donuts\ King.otf) format(opentype);
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Header -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+header{
+    top: 0px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    background-color: #0092FF;
+    border-bottom-left-radius: 30px;
+    z-index: 1000;
+}
+
+.hd-logo{
+    margin-left: 30px;
+    color: #00f2ffbc;
+    font-family: 'Donuts';
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.hd-voltar{
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #005ea5;
+}
+
+.hd-voltar:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+.hd-voltar:active{
+    background-color: rgb(210, 210, 210);
+}
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Content -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+content{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Endereco -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.endereco{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.endereco-outline{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0091ffb5;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.endereco-title{
+    margin: 30px 0;
+}
+
+.endereco-outline > input{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    width: 85%;
+}
+
+.endereco-submit{
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: #0092FF;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.endereco-submit:hover{
+    filter: grayscale(0.3);
+}
+
+.endereco-submit:active{
+    filter: grayscale(0.6);
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Finalizar -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.finalizar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.finalizar-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 65%;
+    margin: 20px 0;
+    border: 2px solid grey;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Cartao -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+.cadastrar-cartao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.cartao{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0091ffb5;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.cartao-title{
+    margin: 10px 0 30px 0;
+}
+
+.cartao > input{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    width: 85%;
+}
+
+.cartao-submit{
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: #0092FF;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.cartao-submit:hover{
+    filter: grayscale(0.3);
+}
+
+.cartao-submit:active{
+    filter: grayscale(0.6);
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Comprar -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.btn{
+    margin: 20px 0;
+    padding: 20px 30px;
+    border-radius: 15px;
+    background-color: #0092FF;
+    color: white;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.btn:hover{
+    filter: grayscale(0.3);
+}
+
+.btn:active{
+    filter: grayscale(0.6);
+}
+
+.teste{
+    
+}

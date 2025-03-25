@@ -1,0 +1,182 @@
+/* 
+    Paleta de Cores:
+    #0092FF
+    #00AAFF
+    #00C3FF
+    #00DBFF
+    #00F3FF
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@font-face {
+    font-family: 'Donuts';
+    src: url(../fonts/Donuts\ King.otf) format(opentype);
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Header -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+header{
+    top: 0px;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    background-color: #0092FF;
+    border-bottom-left-radius: 30px;
+    z-index: 1000;
+}
+
+.hd-logo{
+    margin-left: 30px;
+    color: #00f2ffbc;
+    font-family: 'Donuts';
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.hd-voltar{
+    background-color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 15px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #005ea5;
+}
+
+.hd-voltar:hover{
+    background-color: rgb(230, 230, 230);
+}
+
+.hd-voltar:active{
+    background-color: rgb(210, 210, 210);
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=- Produtos -=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#produtos{
+    margin-top: 80px;
+    text-align: center;
+}
+
+.produtos-title{
+    margin-top: 20px;
+}
+
+.prod-outline{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    width: 65%;
+    margin: 20px 0;
+    border: 2px solid grey;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.card-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+
+.card-txt{
+    text-align: left;
+    margin-left: 30px;
+}
+
+.card-title{
+    width: 300px;
+}
+
+.card-price{
+
+}
+
+.card-nav{
+    width: 500px;
+}
+
+.card-upd{
+    
+}
+
+.card-qnt{
+
+}
+
+.card-submit,
+.card-remove{
+    border-radius: 15px;
+    padding: 8px 15px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+}
+
+.card-submit:hover{
+    filter: grayscale(0.3);
+}
+
+.card-submit:active{
+    filter: grayscale(0.6);
+}
+
+.card-remove:hover{
+    filter: grayscale(0.2);
+}
+
+.card-remove:active{
+    filter: grayscale(0.5);
+}
+
+.card-submit{
+    background-color: #0092FF;
+    color: white;
+}
+
+.card-remove{
+    background-color: red;
+    margin-top: 5px;
+}
+
+.finalizar{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.finalizar-btn{
+    background-color: #0092FF;
+    padding: 15px 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.finalizar-btn > a{
+    color: white;
+}
+
+.finalizar-btn:hover{
+    filter: grayscale(0.3);
+}
+
+.finalizar-btn:active{
+    filter: grayscale(0.6);
+}
