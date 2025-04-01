@@ -3,35 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechGrocery - Login</title>
+    <title>TechGrocery - Cadastro</title>
     <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/cadastroProd.css">
     <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
 </head>
 <body>
     <content>
-        <form action="login">
+        <form id="formulario">
             <a href="index.html" class="tit">
                 <h2 class="titulo">TechGrocery</h2>
             </a><br>
-            <p class="bem-vindo">Bem-vindo de volta!</p><br>
-            <label for="email">
-                <input type="email" name="email" id="email" placeholder="E-mail:" required>
+            <p class="bem-vindo">Cadastro de Produto
+            </p><br>
+            <label for="id">
+                <input type="number" name="id" id="id" placeholder="ID do produto:">
             </label><br>
-            <label for="senha">
-                <input type="password" name="senha" id="senha" placeholder="Senha:" required>
-            </label>
-            <a href="cadastro.html" class="back">Ainda não possui uma conta?</a>
-            <br>
-            <input type="submit" value="Entrar" id="entrar">
+            <label for="nome">
+                <input type="text" name="nome" id="nome" placeholder="Nome do Produto:" required>
+            </label><br>
+            <label for="preco">
+                <input type="number" name="preco" id="preco" placeholder="Preço do Produto:" required>
+            </label><br>
+            <label for="qntEstoque">
+                <input type="number" name="qntEstoque" id="qntEstoque" placeholder="Quantidade em Estoque:" required>
+            </label><br>
+            <label for="descricao">
+                <input type="text" name="descricao" id="descricao" placeholder="Descrição:">
+            </label><br>
+            <label for="url">
+                <input type="text" name="url" id="url" placeholder="URL da imagem:">
+            </label><br>
+            <input type="submit" onclick="cadastrarProduto()" id="cadastrar" value="Cadastrar Produto">
         </form>
         <a href="index.html" class="back">Voltar</a>
     </content>
 
     <script>       
-        function logar() { 
-            const inputEmail = document.getElementById("email");
-            const inputSenha = document.getElementById("senha");
-            const inputCpf = document.getElementById("cpf");
+        function cadastrarProduto() {
+            const inputId = document.getElementById("id");
+            const inputNome = document.getElementById("nome");
+            const inputPreco = document.getElementById("preco");
+            const inputQntEstoque = document.getElementById("qntEstoque");
+            const inputDescricao = document.getElementById("descricao");
+            const inputURL = document.getElementById("url");
 
             fetch("http://localhost:8080/TechGrocery/Register", {
                 headers: {
@@ -40,7 +55,7 @@
                 },
                 method: "POST",
                 body: JSON.stringify({ 
-                    "_id": inputEmail.value,
+                    "_id":  inputId.value,
                     "sSenha": inputSenha.value,
                     "sCpf": inputCpf.value
                 })

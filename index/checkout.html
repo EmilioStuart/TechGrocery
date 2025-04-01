@@ -63,10 +63,51 @@
         </div>
     </content>
     <div class="btn">Comprar</div>
+
+
     <script>
         const validadeCartao = document.getElementById('validadeCartao');
         const dataAtual = new Date();
         validadeCartao.min = `${dataAtual.getFullYear()}-${dataAtual.getMonth() + 1}`;
+
+        function cadastrarEndereco() { 
+            const inputCEP = document.getElementById("cep");
+            const inputNumero = document.getElementById("numero");
+            const inputCompl = document.getElementById("complemento");
+
+            fetch("http://localhost:8080/TechGrocery/Register", {
+                headers: {
+                    'Accept': "application/json",
+                    'Content-Type': "application/json"
+                },
+                method: "POST",
+                body: JSON.stringify({ 
+                    "_id": inputEmail.value,
+                    "sSenha": inputSenha.value,
+                    "sCpf": inputCpf.value
+                })
+            })   
+            .then(res => {
+                if (res.status === 201) {
+                    window.alert("Cadastro realizado com sucesso!");
+                } else if (res.status === 500) {
+                    window.alert("Problemas com o nosso servidor, por favor tente mais tarde...");
+                } else {
+                    window.alert("Erro inesperado. Código: " + res.status);
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao cadastrar:", error);
+                window.alert("Falha na comunicação com o servidor.");
+            });
+        }
+
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+            cadastrar();
+        });
     </script>
 </body>
 </html>
