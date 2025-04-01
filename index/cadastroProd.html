@@ -55,9 +55,12 @@
                 },
                 method: "POST",
                 body: JSON.stringify({ 
-                    "_id":  inputId.value,
-                    "sSenha": inputSenha.value,
-                    "sCpf": inputCpf.value
+                    "iCodigo": inputId.value,
+                    "sNome": inputNome.value,
+                    "dPreco": inputPreco.value,
+                    "iQntEstoque": inputQntEstoque.value,
+                    "sDescricao": inputDescricao.value,
+                    "sURL": inputURL.value
                 })
             })   
             .then(res => {
