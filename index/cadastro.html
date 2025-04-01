@@ -24,6 +24,9 @@
             <label for="cpf">
                 <input type="text" name="cpf" id="cpf" placeholder="CPF:" required>
             </label><br>
+            <label for="telefone">
+                <input type="text" name="telefone" id="telefone" placeholder="Telefone:" required>
+            </label><br>
             <a href="login.html" class="back">Já possui uma conta?</a>
             <br>
             <input type="submit" onclick="cadastrar" id="cadastrar">
@@ -37,6 +40,27 @@
         const inputEmail = document.getElementById("email");
         const inputSenha = document.getElementById("senha");
         const inputCpf = document.getElementById("cpf");
+        const inputIdade = document.getElementById("idade");
+        const inputTelefone = document.getElementById("telefone");
+        const inputNome = document.getElementById("nome");
+
+        const email = inputEmail.value;
+        const senha = inputSenha.value;
+        const cpf = inputCpf.value;
+        const idade = inputIdade.value;
+        const telefone = inputTelefone.value;
+        const nome = inputNome.value;
+
+        const cliente = {
+            email: email,
+            senha: senha,
+            cpf: cpf,
+            idade: idade,
+            telefone: telefone,
+            nome: nome
+        }
+        
+        
 
         fetch("http://localhost:8080/TechGrocery/Register", {
             headers: {
@@ -45,11 +69,15 @@
             },
             method: "POST",
             body: JSON.stringify({ 
-                "_id": inputEmail.value,
-                "sSenha": inputSenha.value,
-                "sCpf": inputCpf.value
+                "sEmail": email,
+                "sSenha": senha,
+                "sCpf": cpf,
+                "iIdade": idade,
+                "sTelefone": telefone,
+                "sNome": nome
             })
-        })   
+        })
+           
         .then(res => {
             if (res.status === 201) {
                 window.alert("Cadastro realizado com sucesso!");
