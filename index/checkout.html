@@ -18,7 +18,7 @@
     </header>
 
     <content>
-        <div class="endereco">
+        <form class="endereco">
             <div class="endereco-outline">
                 <h2 class="endereco-title">Endereço de Entrega:</h2>
                 <input type="text" name="cep" id="cep" placeholder="CEP: " class="endereco-cep" maxlength="8" required>
@@ -27,9 +27,9 @@
                 
                 <input type="text" name="complemento" id="complemento" placeholder="Complemento: " class="endereco-complemento" maxlength="100">
 
-                <div class="endereco-submit">Registrar Endereço</div>
+                <div type="submit" id="formEndereco" class="endereco-submit">Registrar Endereço</div>
             </div>
-        </div>
+        </form>
         <div class="finalizar">
             <h2 class="finalizar-title">Total:</h2>
             <div class="finalizar-outline">
@@ -74,7 +74,7 @@
         const inputValidadeCartao = document.getElementById("validadeCartao");
         const inputCvvCartao = document.getElementById("cvvCartao");
 
-        fetch("http://localhost:8080/TechGrocery/Register", {
+        fetch("http://localhost:8080/TechGrocery/CadastrarCartao", {
             headers: {
                 'Accept': "application/json",
                 'Content-Type': "application/json"

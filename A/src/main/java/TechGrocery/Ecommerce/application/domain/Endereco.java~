@@ -1,0 +1,4 @@
+package TechGrocery.Ecommerce.application.domain;
+
+public class Endereco {
+}

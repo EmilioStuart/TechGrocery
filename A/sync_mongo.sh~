@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Configurações - edite com os dados do seu banco
+MONGO_URI="mongodb+srv://funciona:1234567890@ftp.3s82q.mongodb.net/DADProject"
+DATABASE="DADProject"
+BACKUP_DIR="./backup"
+
+# Mostra o que está sendo feito
+echo "📦 Fazendo dump do banco na nuvem ($DATABASE)..."
+mongodump --uri="$MONGO_URI" --out="$BACKUP_DIR"
+
+if [ $? -ne 0 ]; then
+  echo "❌ Erro ao fazer o dump. Verifique a URI e tente novamente."
+  exit 1
+fi
+
+echo "🧹 Restaurando banco local com --drop (sobrescrita forçada)..."
+mongorestore --drop --db "$DATABASE" "$BACKUP_DIR/$DATABASE"
+
+if [ $? -ne 0 ]; then
+  echo "❌ Erro ao restaurar o banco local."
+  exit 1
+fi
+
+echo "✅ Sincronização concluída com sucesso!"
