@@ -39,26 +39,41 @@
                         <td>Produto 1</td>
                         <td>1</td>
                         <td>R$ 10,00</td>
-                        <td>R$ 20,00</td>
+                        <td class="precoProd">R$ 20,00</td>
                     </tr>
                     <tr>
                         <td>Produto 2</td>
                         <td>2</td>
                         <td>R$ 15,00</td>
-                        <td>R$ 15,00</td>
+                        <td class="precoProd">R$ 15,00</td>
                     </tr>
                     <tr>
                         <td>Produto 3</td>
                         <td>3</td>
                         <td>R$ 7,00</td>
-                        <td>R$ 21,00</td>
+                        <td class="precoProd">R$ 21,00</td>
                     </tr>
                 </tbody>
             </table>
         </content>
+        <br>
+        <div class="total">
+            <h2>Total:</h2>
+        </div>
     </div>
 
     <script>
+        var totalGasto = window.document.getElementsByClassName("precoProd");
+        var total = 0;
+        for (var i = 0; i < totalGasto.length; i++) {
+            var valor = totalGasto[i].innerHTML.replace("R$", "").replace(",", ".");
+            total += parseFloat(valor);
+        }
+        var totalDiv = document.querySelector(".total h2");
+        totalDiv.innerHTML += " R$ " + total.toFixed(2).replace(".", ",");
+
+
+
         var btn = document.querySelector("#gerarPDF");
 
         btn.addEventListener("click", () => {

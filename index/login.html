@@ -28,10 +28,14 @@
     </content>
 
     <script>       
-        function logar() { 
+        function logar() {
+
             const inputEmail = document.getElementById("email");
             const inputSenha = document.getElementById("senha");
             const inputCpf = document.getElementById("cpf");
+
+            email = inputEmail.value;
+            localStorage.setItem("email", email);
 
             fetch("http://localhost:8080/TechGrocery/Register", {
                 headers: {
