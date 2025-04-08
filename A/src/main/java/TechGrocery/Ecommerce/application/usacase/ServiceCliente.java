@@ -51,7 +51,7 @@ public class ServiceCliente {
                     return new ResponseEntity<>("Senha incorreta, por favor tente novamente", HttpStatus.BAD_REQUEST);
                 }
             }else{
-                return new ResponseEntity<>("E-mail não encontrado, por favor faça o cadastro", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("E-mail não encontrado, por favor faça o cadastro", HttpStatus.NOT_FOUND);
             }
         }catch(Exception exception){
             return new ResponseEntity<>("Erro catch", HttpStatus.INTERNAL_SERVER_ERROR);

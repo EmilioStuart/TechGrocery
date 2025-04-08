@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechGrocery - Cadastro</title>
+    <title>TechGrocery</title>
     <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="../style/cadastroProd.css">
     <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
@@ -16,20 +16,26 @@
             </a><br>
             <p class="bem-vindo">Cadastro de Produto
             </p><br>
-            <label for="id">
-                <input type="number" name="id" id="id" placeholder="ID do produto:">
+            <label for="codigo">
+                <input type="number" name="codigo" id="codigo" placeholder="Código do produto:">
+            </label><br>
+            <label for="validade">
+                <input type="date" name="validade" id="validade" placeholder="Validade:" required>
+            </label><br>
+            <label for="marca">
+                <input type="text" name="marca" id="marca" placeholder="Marca:" required>
+            </label><br>            
+            <label for="preco">
+                <input type="number" name="preco" id="preco" placeholder="Preço do Produto:" required>
             </label><br>
             <label for="nome">
                 <input type="text" name="nome" id="nome" placeholder="Nome do Produto:" required>
             </label><br>
-            <label for="preco">
-                <input type="number" name="preco" id="preco" placeholder="Preço do Produto:" required>
+            <label for="descricao">
+                <input type="text" name="descricao" id="descricao" placeholder="Descrição:">
             </label><br>
             <label for="qntEstoque">
                 <input type="number" name="qntEstoque" id="qntEstoque" placeholder="Quantidade em Estoque:" required>
-            </label><br>
-            <label for="descricao">
-                <input type="text" name="descricao" id="descricao" placeholder="Descrição:">
             </label><br>
             <label for="url">
                 <input type="text" name="url" id="url" placeholder="URL da imagem:">
@@ -41,11 +47,13 @@
 
     <script>       
         function cadastrarProduto() {
-            const inputId = document.getElementById("id");
-            const inputNome = document.getElementById("nome");
+            const inputCodigo = document.getElementById("codigo");
+            const inputValidade = document.getElementById("validade");
+            const inputMarca = document.getElementById("marca");
             const inputPreco = document.getElementById("preco");
-            const inputQntEstoque = document.getElementById("qntEstoque");
+            const inputNome = document.getElementById("nome");
             const inputDescricao = document.getElementById("descricao");
+            const inputQntEstoque = document.getElementById("qntEstoque");
             const inputURL = document.getElementById("url");
 
             fetch("http://localhost:8080/TechGrocery/Register", {
@@ -55,11 +63,13 @@
                 },
                 method: "POST",
                 body: JSON.stringify({ 
-                    "iCodigo": inputId.value,
-                    "sNome": inputNome.value,
+                    "iCodigo": inputCodigo.value,
+                    "dtValidade" : inputValidade.value,
+                    "sMarca" : inputMarca.value,
                     "dPreco": inputPreco.value,
-                    "iQntEstoque": inputQntEstoque.value,
+                    "sNome": inputNome.value,
                     "sDescricao": inputDescricao.value,
+                    "iQntEstoque": inputQntEstoque.value,
                     "sURL": inputURL.value
                 })
             })   
@@ -82,7 +92,7 @@
 
         formulario.addEventListener('submit', function (event) {
             event.preventDefault();
-            cadastrar();
+            cadastrarProduto();
         });
     </script>
 </body>

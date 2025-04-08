@@ -34,19 +34,4 @@ public class ServiceProduto {
             return new ResponseEntity<>("Erro ao deletar produto", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    public Object atualizarProduto(String idProduto, int quantidade){
-        try {
-            if (repositoryProduct.findById(idProduto).isPresent()) {
-                Produto produto = repositoryProduct.findById(idProduto).get();
-                produto.setiEstoque(quantidade);
-                repositoryProduct.save(produto);
-                return new ResponseEntity<>("Produto atualizado com sucesso", HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("Produto não encontrado", HttpStatus.NOT_FOUND);
-            }
-        } catch (Exception exception) {
-            return new ResponseEntity<>("Erro ao atualizar produto", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }

@@ -5,37 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechGrocery</title>
     <link rel="stylesheet" href="../style/login.css">
+    <link rel="stylesheet" href="../style/cadastroProd.css">
     <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
 </head>
 <body>
     <content>
-        <form action="login">
+        <form id="formulario">
             <a href="index.html" class="tit">
                 <h2 class="titulo">TechGrocery</h2>
             </a><br>
-            <p class="bem-vindo">Bem-vindo de volta!</p><br>
-            <label for="email">
-                <input type="email" name="email" id="email" placeholder="E-mail:" required>
+            <p class="bem-vindo">Deletar Produto
+            </p><br>
+            <label for="codigo">
+                <input type="number" name="codigo" id="codigo" placeholder="Código do produto:">
             </label><br>
-            <label for="senha">
-                <input type="password" name="senha" id="senha" placeholder="Senha:" required>
-            </label>
-            <a href="cadastro.html" class="back">Ainda não possui uma conta?</a>
-            <br>
-            <input type="submit" value="Entrar" id="entrar">
+            <input type="submit" onclick="deletarProduto()" id="cadastrar" value="Deletar Produto">
         </form>
         <a href="index.html" class="back">Voltar</a>
     </content>
 
     <script>       
-        function logar() {
-
-            const inputEmail = document.getElementById("email");
-            const inputSenha = document.getElementById("senha");
-
-            email = inputEmail.value;
-            localStorage.setItem("email", email);
-
+        function deletarProduto() {
+            const inputCodigo = document.getElementById("codigo");
             fetch("http://localhost:8080/TechGrocery/Register", {
                 headers: {
                     'Accept': "application/json",
@@ -43,21 +34,15 @@
                 },
                 method: "POST",
                 body: JSON.stringify({ 
-                    "_id": inputEmail.value,
-                    "sSenha": inputSenha.value
+                    "iCodigo": inputCodigo.value,
                 })
             })   
             .then(res => {
                 if (res.status === 200) {
-                    localStorage.setItem('idUser', inputEmail.value);
-                    window.alert("Bem-vindo(a) de volta!");
+                    window.alert("Deletado realizado com sucesso!");
                 } else if (res.status === 500) {
                     window.alert("Problemas com o nosso servidor, por favor tente mais tarde...");
-                } else if (res.status === 400) {
-                    window.alert("Senha incorreta, tente novamente!");
-                }  else if (res.status === 404) {
-                    window.alert("E-mail não encontrado, faça o cadastro!");
-                }else {
+                } else {
                     window.alert("Erro inesperado. Código: " + res.status);
                 }
             })
@@ -71,7 +56,7 @@
 
         formulario.addEventListener('submit', function (event) {
             event.preventDefault();
-            logar();
+            deletarProduto();
         });
     </script>
 </body>

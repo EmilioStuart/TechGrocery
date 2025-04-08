@@ -59,4 +59,16 @@ public class ServiceCliente {
     }
 
 
+    public Object retornarCliente(String email) {
+        try{
+            if(repositoryClient.findById(email).isPresent()){
+                Cliente cliente = mapperClient.toCliente(repositoryClient.findById(email));
+                return new ResponseEntity<>(cliente, HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>("Cliente não encontrado", HttpStatus.NOT_FOUND);
+            }
+        }catch(Exception exception){
+            return new ResponseEntity<>("Erro catch", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechGrocery - Cadastro</title>
+    <title>TechGrocery</title>
     <link rel="stylesheet" href="../style/login.css">
     <link rel="stylesheet" href="../style/cadastro.css">
     <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
@@ -29,76 +29,55 @@
             </label><br>
             <a href="login.html" class="back">Já possui uma conta?</a>
             <br>
-            <input type="submit" onclick="cadastrar" id="cadastrar">
+            <input type="submit" id="cadastrar">
         </form>
         <a href="index.html" class="back">Voltar</a>
     </content>
 
     <script>
-            
         function cadastrar() { 
-        const inputEmail = document.getElementById("email");
-        const inputSenha = document.getElementById("senha");
-        const inputCpf = document.getElementById("cpf");
-        const inputIdade = document.getElementById("idade");
-        const inputTelefone = document.getElementById("telefone");
-        const inputNome = document.getElementById("nome");
+            const inputEmail = document.getElementById("email");
+            const inputSenha = document.getElementById("senha");
+            const inputCpf = document.getElementById("cpf");
+            const inputTelefone = document.getElementById("telefone");
 
-        const email = inputEmail.value;
-        const senha = inputSenha.value;
-        const cpf = inputCpf.value;
-        const idade = inputIdade.value;
-        const telefone = inputTelefone.value;
-        const nome = inputNome.value;
-
-        const cliente = {
-            email: email,
-            senha: senha,
-            cpf: cpf,
-            idade: idade,
-            telefone: telefone,
-            nome: nome
-        }
-        
-        
-
-        fetch("http://localhost:8080/TechGrocery/Register", {
-            headers: {
-                'Accept': "application/json",
-                'Content-Type': "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify({ 
-                "sEmail": email,
-                "sSenha": senha,
-                "sCpf": cpf,
-                "iIdade": idade,
-                "sTelefone": telefone,
-                "sNome": nome
+            fetch("http://localhost:8080/TechGrocery/Register", {
+                headers: {
+                    'Accept': "application/json",
+                    'Content-Type': "application/json"
+                },
+                method: "POST",
+                body: JSON.stringify({ 
+                    "sEmail": inputEmail.value,
+                    "sSenha": inputSenha.value,
+                    "sCpf": inputCpf.value,
+                    "sTelefone": inputTelefone.value
+                })
             })
-        })
-           
-        .then(res => {
-            if (res.status === 201) {
-                window.alert("Cadastro realizado com sucesso!");
-            } else if (res.status === 500) {
-                window.alert("Problemas com o nosso servidor, por favor tente mais tarde...");
-            } else {
-                window.alert("Erro inesperado. Código: " + res.status);
-            }
-        })
-        .catch(error => {
-            console.error("Erro ao cadastrar:", error);
-            window.alert("Falha na comunicação com o servidor.");
+            .then(res => {
+                if (res.status === 201) {
+                    localStorage.setItem('idUser', inputEmail.value);
+                    window.alert("Cadastro realizado com sucesso!");
+                } else if (res.status === 500) {
+                    window.alert("Problemas com o nosso servidor, por favor tente mais tarde...");
+                } else if (res.status === 409) {
+                    window.alert("E-mail já cadastrado, por favor utilize outro ou faça o login...");
+                } else {
+                    window.alert("Erro inesperado. Código: " + res.status);
+                }
+            })
+            .catch(error => {
+                console.error("Erro ao cadastrar:", error);
+                window.alert("Falha na comunicação com o servidor.");
+            });
+        }
+
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+            cadastrar();
         });
-    }
-
-    const formulario = document.getElementById("formulario");
-
-    formulario.addEventListener('submit', function (event) {
-        event.preventDefault();
-        cadastrar();
-    });
     </script>
 </body>
 </html>

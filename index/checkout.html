@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechGrocery - Pagamento</title>
+    <title>TechGrocery</title>
     <link rel="stylesheet" href="../style/checkout.css">
     <link rel="shortcut icon" href="../images/candy.svg" type="image/x-icon">
 </head>
@@ -21,7 +21,7 @@
         <div class="endereco">
             <div class="endereco-outline">
                 <h2 class="endereco-title">Endereço de Entrega:</h2>
-                <input type="number" name="cep" id="cep" placeholder="CEP: " class="endereco-cep" maxlength="8" required>
+                <input type="text" name="cep" id="cep" placeholder="CEP: " class="endereco-cep" maxlength="8" required>
                 
                 <input type="number" name="numero" id="numero" placeholder="Número: " class="endereco-numero" required>
                 
@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="cadastrar-cartao">
-            <div class="cartao">
+            <form id="formCartao" class="cartao">
                 <h2 class="cartao-title">Cartão de Crédito:</h2>
                 <input type="number" name="numeroCartao" id="numeroCartao" placeholder="Número do Cartão: " class="cartao-numero" minlength="16" maxlength="16" required>
 
@@ -58,8 +58,8 @@
                 
                 <input type="number" name="cvvCartao" id="cvvCartao" placeholder="CVV: " class="cartao-cvv" min="100" max="999" required>
 
-                <div class="cartao-submit" onclick="CadastrarCartao()">Cadastrar Cartão</div>
-            </div>
+                <div type="submit" id="cartao-submit" class="cartao-submit">Cadastrar Cartão</div>
+            </form>
         </div>
     </content>
     <a href="relatorio.html">
@@ -68,48 +68,45 @@
 
 
     <script>
-        const validadeCartao = document.getElementById('validadeCartao');
-        const dataAtual = new Date();
-        validadeCartao.min = `${dataAtual.getFullYear()}-${dataAtual.getMonth() + 1}`;
+    function cadastrarCartao() { 
+        const inputNumeroCartao = document.getElementById("numeroCartao");
+        const inputNomeCartao = document.getElementById("nomeCartao"); 
+        const inputValidadeCartao = document.getElementById("validadeCartao");
+        const inputCvvCartao = document.getElementById("cvvCartao");
 
-        function cadastrarEndereco() { 
-            const inputCEP = document.getElementById("cep");
-            const inputNumero = document.getElementById("numero");
-            const inputCompl = document.getElementById("complemento");
-
-            fetch("http://localhost:8080/TechGrocery/Register", {
-                headers: {
-                    'Accept': "application/json",
-                    'Content-Type': "application/json"
-                },
-                method: "POST",
-                body: JSON.stringify({ 
-                    "_id": inputEmail.value,
-                    "sSenha": inputSenha.value,
-                    "sCpf": inputCpf.value
-                })
-            })   
-            .then(res => {
-                if (res.status === 201) {
-                    window.alert("Cadastro realizado com sucesso!");
-                } else if (res.status === 500) {
-                    window.alert("Problemas com o nosso servidor, por favor tente mais tarde...");
-                } else {
-                    window.alert("Erro inesperado. Código: " + res.status);
-                }
+        fetch("http://localhost:8080/TechGrocery/Register", {
+            headers: {
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({ 
+                "sNomeCartao": inputNomeCartao.value, 
+                "sEmailCliente": localStorage.getItem("idUser"),
+                "sNumeroCartao": inputNumeroCartao.value,              
+                "sValidadeCartao": inputValidadeCartao.value,
+                "sCvvCartao": inputCvvCartao.value
             })
-            .catch(error => {
-                console.error("Erro ao cadastrar:", error);
-                window.alert("Falha na comunicação com o servidor.");
-            });
-        }
-
-        const formulario = document.getElementById("formulario");
-
-        formulario.addEventListener('submit', function (event) {
-            event.preventDefault();
-            cadastrar();
+        })
+        .then(res => {
+            if (res.status === 201) {
+                window.alert("Cartão cadastrado com sucesso!");
+            } else {
+                window.alert("Erro inesperado. Código: " + res.status);
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao cadastrar:", error);
+            window.alert("Falha na comunicação com o servidor.");
         });
-    </script>
+    }
+
+    const formulario = document.getElementById("formCartao");
+
+    formulario.addEventListener('submit', function (event) {
+        event.preventDefault();
+        cadastrarCartao();
+    });
+</script>
 </body>
 </html>

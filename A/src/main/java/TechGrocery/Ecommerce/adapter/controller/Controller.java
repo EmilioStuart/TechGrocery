@@ -40,6 +40,11 @@ public class Controller {
         return serviceProduto.deletarProduto(String.valueOf(produto.getiCodigo()));
     }
 
+    @PostMapping("/AtualizarProduto")
+    public Object AtualizarProduto(@RequestBody String idProduto, @RequestBody int quantidade){
+        return serviceProduto.atualizarProduto(idProduto, quantidade);
+    }
+
     //Venda
     @PostMapping("/CadastrarVenda")
     public Object CadastrarVenda(@RequestBody Vendas venda){
@@ -70,7 +75,7 @@ public class Controller {
         return serviceCliente.loginCliente(email, senha);
     }
 
-    @GetMapping("/retornarCliente")
+    @GetMapping("/RetornarCliente")
     public Object retornoCLiente(@RequestBody String email){
         return serviceCliente.retornarCliente(email);
     }
