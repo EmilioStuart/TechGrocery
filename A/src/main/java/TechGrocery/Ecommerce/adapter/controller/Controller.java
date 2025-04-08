@@ -1,0 +1,85 @@
+package TechGrocery.Ecommerce.adapter.controller;
+
+import TechGrocery.Ecommerce.application.domain.Cartao;
+import TechGrocery.Ecommerce.application.domain.Cliente;
+import TechGrocery.Ecommerce.application.domain.Produto;
+import TechGrocery.Ecommerce.application.domain.Vendas;
+import TechGrocery.Ecommerce.application.usacase.ServiceCartao;
+import TechGrocery.Ecommerce.application.usacase.ServiceCliente;
+import TechGrocery.Ecommerce.application.usacase.ServiceProduto;
+import TechGrocery.Ecommerce.application.usacase.ServiceVenda;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+
+@RequestMapping("/TechGrocery")
+@RestController
+public class Controller {
+
+    //Autowired faz injeção de dependências
+    @Autowired
+    ServiceProduto serviceProduto;
+
+    @Autowired
+    ServiceCartao serviceCartao;
+
+    @Autowired
+    ServiceVenda serviceVenda;
+
+    @Autowired
+    ServiceCliente serviceCliente;
+
+    //Produto
+    @PostMapping("/CadastrarProduto")
+    public Object CadastrarProduto(@RequestBody Produto produto){
+        return serviceProduto.cadastrarProduto(produto);
+    }
+
+    @PostMapping("/DeletarProduto")
+    public Object DeletarProduto(@RequestBody Produto produto){
+        return serviceProduto.deletarProduto(String.valueOf(produto.getiCodigo()));
+    }
+
+    //Venda
+    @PostMapping("/CadastrarVenda")
+    public Object CadastrarVenda(@RequestBody Vendas venda){
+        return serviceVenda.cadastrarVenda(venda);
+    }
+
+    //Cartão
+
+    @PostMapping("/CadastrarCartao")
+    public Object CadastrarCartao(@RequestBody Cartao cartao){
+        return serviceCartao.cadastrarCartao(cartao);
+    }
+
+    @PostMapping("/DeletarCartao")
+    public Object DeletarCartao(@RequestBody String sNomeCartao, @RequestBody String sEmail){
+        return serviceCartao.deletarCartao(sNomeCartao, sEmail);
+    }
+
+    //Cliente
+
+    @PostMapping("/CadastrarCliente")
+    public Object CadastrarCliente(@RequestBody Cliente cliente){
+        return serviceCliente.cadastrarCliente(cliente);
+    }
+
+    @PostMapping("/LoginCliente")
+    public Object loginCliente(@RequestBody String email, String senha){
+        return serviceCliente.loginCliente(email, senha);
+    }
+
+    @GetMapping("/retornarCliente")
+    public Object retornoCLiente(@RequestBody String email){
+        return serviceCliente.retornarCliente(email);
+    }
+
+    //Delete - deletar
+    //Update - atualizar
+    //Post - principalmente inserir dados
+    //Get - não muda nada, só retorna
+
+    //@RequestBody - anotação indicando o que a requisiçao HTTP precisa receber
+    // geralmente como um JSON pra funcionar
+}

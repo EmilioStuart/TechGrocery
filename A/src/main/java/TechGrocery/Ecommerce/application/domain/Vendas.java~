@@ -1,0 +1,12 @@
+package TechGrocery.Ecommerce.application.domain;
+
+import java.util.Date;
+
+public class Vendas {
+    @Id
+    int idVenda;
+    int idProduto;
+    int idCliente;
+    Date dataVenda;
+
+}
